@@ -21,6 +21,24 @@ module.exports = function(driver) {
     waitForHoldingPage: function() {
       return driver.wait(until.titleIs(this.holdingPage));
     },
+    isQueueNumberVisible: function() {
+      return driver.wait(until.elementLocated(elements.queueNumber))
+    },
+    queueNumber: function() {
+      let element = driver.findElement(elements.queueNumber);
+      return element.getText().then(text => {
+        if(text === '0') {
+          driver.sleep(500)
+          return element.getText().then(res => {
+            return res;
+          });
+        } else { return text };
+      });
+    },
+    wait: function() {
+      driver.sleep(1000);
+      return;
+    }
   }
 
 }
