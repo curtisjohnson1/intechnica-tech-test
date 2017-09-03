@@ -15,4 +15,12 @@ test.describe('trafficDefender', function() {
   test.it('navigates to test page', function*() {
     expect(yield testPage.checkPageTitle()).to.equal('Perf test server 1');
   });
+
+  test.it('hits the queue page', function*() {
+    testPage.createHoldingPage();
+    testPage.navigateToTestPage();
+    testPage.waitForHoldingPage();
+    expect(yield testPage.checkPageTitle()).to.equal('TrafficDefender Holding Page');
+  });
+  
 })
