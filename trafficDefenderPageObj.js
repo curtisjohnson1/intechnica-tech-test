@@ -17,7 +17,10 @@ module.exports = function(driver) {
     },
     createHoldingPage: function() {
       return driver.executeScript(`window.open("${this.url}");`);
-    }
+    },
+    waitForHoldingPage: function() {
+      return driver.wait(until.titleIs(this.holdingPage));
+    },
   }
 
 }
