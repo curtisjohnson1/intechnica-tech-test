@@ -10,7 +10,7 @@ const testPage = require('../trafficDefenderPageObj')(driver);
 
 test.describe('trafficDefender', function() {
   before(() => testPage.navigateToTestPage());
-  after(() => driver.quit());
+  after(() => testPage.wait());
 
   test.it('navigates to test page', function*() {
     expect(yield testPage.checkPageTitle()).to.equal('Perf test server 1');
@@ -22,5 +22,11 @@ test.describe('trafficDefender', function() {
     testPage.waitForHoldingPage();
     expect(yield testPage.checkPageTitle()).to.equal('TrafficDefender Holding Page');
   });
-  
+
+  test.it('returns the queue number as a string', function*() {
+    testPage.wait();
+    testPage.isQueueNumberVisible();
+    expect(yield testPage.queueNumber()).to.be.a('string')
+  });
+
 })
