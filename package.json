@@ -1,0 +1,20 @@
+{
+  "name": "intechnica-techtest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/curtisjohnson1/intechnica-tech-test.git",
+  "author": "curtis johnson <curtisianjohnson@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha ./spec/",
+    "lint": "eslint ./"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chromedriver": "^2.32.0",
+    "co-mocha": "^1.2.0",
+    "lint": "^1.1.2",
+    "mocha": "^3.5.0",
+    "selenium-webdriver": "^3.5.0"
+  }
+}
