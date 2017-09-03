@@ -14,6 +14,9 @@ module.exports = function(driver) {
       return driver.getTitle(title => {
         return title;
       });
+    },
+    createHoldingPage: function() {
+      return driver.executeScript(`window.open("${this.url}");`);
     }
   }
 
