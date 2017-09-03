@@ -2,7 +2,7 @@ const { Builder, By, until } = require('selenium-webdriver');
 
 module.exports = function(driver) {
   const elements = {
-    queueNumber: By.className('odometer-value')
+    queueNumber: By.id('queueLength')
   };
   return {
     url: 'http://34.252.63.57/',
@@ -25,19 +25,35 @@ module.exports = function(driver) {
       return driver.wait(until.elementLocated(elements.queueNumber))
     },
     queueNumber: function() {
+      this.wait();
       let element = driver.findElement(elements.queueNumber);
       return element.getText().then(text => {
         if(text === '0') {
-          driver.sleep(500)
+          this.wait();
           return element.getText().then(res => {
+            console.log(`your queue number position is ${res}`);
             return res;
           });
-        } else { return text };
+        } else { 
+          console.log(`your queue number position is ${text}`);
+          return text };
       });
     },
     wait: function() {
-      driver.sleep(1000);
-      return;
+      return driver.sleep(1000);
+    },
+    enterWebPage: function() {
+      driver.sleep(50000);
+      return driver.getTitle(title => {
+        if(title === this.webPageTitle) {
+          return title;
+        } else {
+          driver.sleep(20000);
+          return driver.getTitle(title => {
+            return title;
+          });
+        };
+      });
     }
   }
 
