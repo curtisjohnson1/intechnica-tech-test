@@ -2,7 +2,11 @@
 
 ## TrafficDefender
 
-This test uses Selenium to automate the browser. Mocha will then run through a number of tests to check that TrafficDefender begins to run once the maximum number of users has been exceeded. Once on the TrafficDefender page, you will be able to view your queue number position and wait for your entry to the webpage. 
+This test uses Selenium to automate the browser. 
+
+Mocha will then run through a number of tests to check that TrafficDefender begins to run once the maximum number of users has been exceeded. 
+
+Once on the TrafficDefender page, you will be able to view your queue number position and wait for your entry to the webpage.
 
 ## Prerequisites
 
@@ -39,3 +43,11 @@ To run all Selenium tests, input the terminal command below and wait for all the
 ```javascript
 npm test
 ```
+
+## Built Using
+
+* [Selenium](http://www.seleniumhq.org/) - Selenium Browser Automation
+* [Mocha](https://mochajs.org/) - A Javascript testing framework
+* [Chai](http://chaijs.com/) - Chai is a BDD / TDD assertion library for node and the browser
+
+
