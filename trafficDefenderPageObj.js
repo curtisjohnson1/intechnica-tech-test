@@ -43,7 +43,7 @@ module.exports = function(driver) {
       return driver.sleep(1000);
     },
     enterWebPage: function() {
-      driver.sleep(50000);
+      driver.sleep(60000);
       return driver.getTitle(title => {
         if(title === this.webPageTitle) {
           return title;
