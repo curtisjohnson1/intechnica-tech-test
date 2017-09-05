@@ -12,7 +12,7 @@ const testPage = require('../trafficDefenderPageObj')(driver);
 test.describe('trafficDefender', function() {
   
   // extend mocha timeout
-  this.timeout(65000);
+  this.timeout(65000); 
 
   beforeEach(() => {
     driver = new Builder().forBrowser('chrome').build();
