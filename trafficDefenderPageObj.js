@@ -41,8 +41,11 @@ module.exports = function(driver) {
     wait: function() {
       return driver.sleep(1000);
     },
+    waitToEnter: function() {
+      return driver.wait(until.titleIs(this.webPageTitle));
+    },
     enterWebPage: function() {
-      driver.sleep(60000);
+      this.waitToEnter();
       return driver.getTitle(title => {
         if(title === this.webPageTitle) {
           return title;
