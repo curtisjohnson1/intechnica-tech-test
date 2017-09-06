@@ -6,7 +6,7 @@ const browser = require('chromedriver');
 const { Builder, By, until } = require('selenium-webdriver');
 coMocha(mocha);
 
-let driver = new Builder().forBrowser('chrome').build();
+const driver = new Builder().forBrowser('chrome').build();
 const testPage = require('../trafficDefenderPageObj')(driver);
 
 test.describe('trafficDefender', function() {
@@ -14,14 +14,10 @@ test.describe('trafficDefender', function() {
   // extend mocha timeout
   this.timeout(65000); 
 
-  beforeEach(() => {
-    driver = new Builder().forBrowser('chrome').build();
-  });
-  afterEach(() => driver.quit());
-  after(() => testPage.quit());
+  before(() => testPage.navigateToTestPage());
+  after(() => driver.quit());
 
   test.it(`That a user can make a request to the website and receive an expected response`, function*() {
-    testPage.navigateToTestPage();
     expect(yield testPage.checkPageTitle()).to.equal('Perf test server 1');
   });
 
@@ -33,11 +29,13 @@ test.describe('trafficDefender', function() {
   });
 
   test.it(`The queue page will return the queue number as a string`, function*() {
+    testPage.wait();
     testPage.isQueueNumberVisible();
     expect(yield testPage.queueNumber()).to.be.a('string')
   });
 
   test.it(`That when requested the queue page returns a valid queue position`, function*() {
+    testPage.wait();
     testPage.isQueueNumberVisible();
     expect(yield testPage.queueNumber()).to.equal('1');
   });
